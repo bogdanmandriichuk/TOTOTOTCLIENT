@@ -1,0 +1,43 @@
+/* Posts.css */
+
+/* Ensure the card and its content are properly responsive */
+.card {
+    margin: 0 auto; /* Center the card */
+    max-width: 100%; /* Ensure the card does not overflow */
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.image-gallery-slide img {
+    width: 100%;
+    height: auto; /* Ensure the image maintains aspect ratio */
+}
+
+/* Adjust title and text alignment for different screen sizes */
+.card-title,
+p {
+    font-size: 1.1em;
+}
+
+/* Center the button on small screens */
+.text-center button {
+    margin-top: 20px;
+}
+
+/* Media queries for further adjustments */
+@media (max-width: 576px) {
+    .card-title,
+    p {
+        font-size: 1em; /* Slightly smaller text on very small screens */
+    }
+
+    .image-gallery-slide img {
+        height: auto; /* Keep images responsive */
+    }
+
+    .text-center {
+        padding-bottom: 20px;
+    }
+}

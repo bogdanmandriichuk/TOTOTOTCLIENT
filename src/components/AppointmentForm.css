@@ -1,0 +1,76 @@
+/* AppointmentForm.css */
+
+/* Ensure the container centers its content and adjusts to screen size */
+.appointment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    margin-top: 60px; /* To accommodate the fixed navbar height */
+}
+
+/* Style for the header text */
+.header-text h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.header-text p {
+    font-size: 1.1em;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+/* Animated button adjustments */
+.animated-button1 {
+    display: inline-block;
+    margin: 20px 0;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    position: relative;
+}
+
+/* Ensure spans inside the animated button maintain their styles */
+.animated-button1 span {
+    position: absolute;
+}
+
+.animated-button1 span:nth-child(1),
+.animated-button1 span:nth-child(3) {
+    width: 100%;
+    height: 4px;
+}
+
+.animated-button1 span:nth-child(2),
+.animated-button1 span:nth-child(4) {
+    height: 100%;
+    width: 4px;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 576px) {
+    .header-text h1 {
+        font-size: 1.5em; /* Smaller font size for smaller screens */
+    }
+
+    .header-text p {
+        font-size: 1em;
+    }
+
+    .animated-button1 {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .modal-body form {
+        font-size: 0.9em;
+    }
+}

@@ -1,0 +1,136 @@
+.appointment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh; /* Adjusting height to fit within the viewport with reduced spacing */
+    margin: 5px 0; /* Reduced margin at the top and bottom */
+    text-align: center;
+    background-color: #f8f9fa; /* Light background color */
+    padding: 0px; /* General padding around the content */
+}
+
+.header-text {
+    margin-bottom: 10px; /* Reduced margin below the text */
+}
+
+.header-text h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 5px; /* Reduced margin below the heading */
+    color: #343a40; /* Dark grey color */
+}
+
+.header-text p {
+    font-size: 1.2em;
+    margin-bottom: 5px; /* Reduced margin below the paragraph */
+    color: #6c757d; /* Medium grey color */
+}
+.animated-button1 {
+    background: linear-gradient(-30deg, #FF00FF 50%, #4169E1 50%);
+    padding: 20px 40px;
+    margin: 12px;
+    display: inline-block;
+    transform: translate(0%, 0%);
+    overflow: hidden;
+    color: #f7d4d4;
+    font-size: 20px;
+    letter-spacing: 2.5px;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.animated-button1::before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #ad8585;
+    opacity: 0;
+    transition: .2s opacity ease-in-out;
+}
+
+.animated-button1:hover::before {
+    opacity: 0.2;
+}
+
+.animated-button1 span {
+    position: absolute;
+}
+
+.animated-button1 span:nth-child(1) {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to left, rgba(43, 8, 8, 0), #00FF00);
+    animation: animateTop 2s linear infinite;
+}
+
+@keyframes animateTop {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animated-button1 span:nth-child(2) {
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to top, rgba(43, 8, 8, 0), #FFFF00);
+    animation: animateRight 2s linear infinite;
+}
+
+@keyframes animateRight {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.animated-button1 span:nth-child(3) {
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, rgba(43, 8, 8, 0), #00FF00);
+    animation: animateBottom 2s linear infinite;
+}
+
+@keyframes animateBottom {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.animated-button1 span:nth-child(4) {
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(to bottom, rgba(43, 8, 8, 0), #FFFF00);
+    animation: animateLeft 2s linear infinite;
+}
+
+@keyframes animateLeft {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}

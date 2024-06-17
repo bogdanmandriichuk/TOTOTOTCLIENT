@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, { useRef } from 'react';
+import Header from './components/Header';
+import Slider from './components/Slider';
+import Footer from './components/Footer';
+import Posts from "./components/Posts";
+import AppointmentForm from "./components/AppointmentForm";
+import LocationBlock from "./components/LocationBlock";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const appointmentRef = useRef(null);
+
+    const scrollToAppointment = () => {
+        if (appointmentRef.current) {
+            appointmentRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    return (
+        <div className="App">
+            <Header scrollToAppointment={scrollToAppointment} />
+            <div className="section-margin"></div>
+            <Slider />
+            <div className="section-margin"></div>
+            <Posts />
+            <div className="section-margin"></div>
+            <div ref={appointmentRef} id="appointment-form">
+                <AppointmentForm />
+            </div>
+            <div className="section-margin"></div>
+            <LocationBlock />
+            <div className="section-margin"></div>
+            <Footer />
+        </div>
+    );
+};
 
 export default App;

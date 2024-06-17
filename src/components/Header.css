@@ -1,0 +1,44 @@
+/* Header.css */
+
+/* General styles for the navbar */
+.navbar {
+    padding: 0.5rem 1rem; /* Adjust padding for better spacing */
+}
+
+.navbar-brand {
+    font-size: 1.5rem; /* Adjust brand font size */
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 1.1rem; /* Slightly increase the font size for better readability */
+    color: #fff; /* Ensure text color is visible on dark background */
+}
+
+.nav-link:hover {
+    color: #bbb; /* Change text color on hover for better UX */
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.3rem; /* Adjust brand font size for smaller screens */
+    }
+    .nav-link {
+        font-size: 1rem; /* Adjust link font size for smaller screens */
+        padding: 0.5rem 1rem; /* Adjust padding for better touch targets */
+    }
+    .navbar {
+        padding: 0.5rem; /* Reduce padding for smaller screens */
+    }
+}
+
+/* Additional fine-tuning for larger screens */
+@media (min-width: 992px) {
+    .navbar {
+        padding: 1rem 2rem; /* Increase padding for larger screens */
+    }
+    .nav-link {
+        padding: 0.5rem 1.5rem; /* Add more padding around links */
+    }
+}

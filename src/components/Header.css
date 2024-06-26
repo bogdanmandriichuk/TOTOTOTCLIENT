@@ -1,5 +1,9 @@
 /* Header.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
+body {
+    font-family: 'Playfair Display', serif;
+}
 /* General styles for the navbar */
 .navbar {
     padding: 0.5rem 1rem; /* Adjust padding for better spacing */

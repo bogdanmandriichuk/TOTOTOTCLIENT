@@ -6,7 +6,7 @@ const Header = ({ scrollToAppointment }) => {
     return (
         <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
             <Container>
-                <Navbar.Brand href="#home">Your Brand</Navbar.Brand>
+                <Navbar.Brand href="#home" className="navbar-brand">Palaeva Tattoo</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-between">
                     <Nav className="ml-auto">

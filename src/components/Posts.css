@@ -1,9 +1,26 @@
 /* Posts.css */
+/* src/components/Posts.css */
+/* src/components/Posts.css */
+/* src/components/Posts.css */
+/* src/components/Posts.css */
+.info-block {
+    background-color: #f8f9fa; /* Світло-сірий фон */
+    padding: 20px; /* Внутрішні відступи */
+    border-radius: 8px; /* Округлені кути */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тінь */
+    margin-bottom: 40px; /* Нижній відступ */
+    margin-top: 40px; /* Верхній відступ */
+    color: #000; /* Чорний колір тексту */
+}
 
-/* Ensure the card and its content are properly responsive */
-.card {
-    margin: 0 auto; /* Center the card */
-    max-width: 100%; /* Ensure the card does not overflow */
+.info-block h2 {
+    margin-bottom: 20px; /* Відступ між заголовком і кнопкою */
+    color: #000; /* Чорний колір заголовка */
+}
+
+.info-block .btn-primary {
+    font-size: 18px; /* Збільшуємо розмір тексту кнопки */
+    padding: 10px 20px; /* Додаємо відступи всередині кнопки */
 }
 
 .card-body {

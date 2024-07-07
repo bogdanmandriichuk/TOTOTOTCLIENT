@@ -1,0 +1,68 @@
+/* Slider.css */
+/* Встановлення фіксованої висоти для блоку слайдера */
+.carousel {
+    height: 500px; /* Встановіть бажану висоту */
+}
+
+/* Адаптація зображень під фіксовану висоту слайдера */
+.carousel-item img {
+    height: 500px;
+    object-fit: cover; /* Зображення зберігають свої пропорції і обрізаються відповідно до контейнера */
+}
+
+/* Стилі для підписів слайдера */
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5); /* Тло з чорним напівпрозорим кольором */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Підлаштування тексту під стиль */
+.carousel-caption h3,
+.carousel-caption p {
+    color: white; /* Зробіть текст яскравішим для кращої видимості */
+}
+
+/* Стилі для кнопок */
+.carousel-button {
+    background-color: rgba(255, 255, 255, 0.7); /* Світло-сірий, напівпрозорий фон */
+    color: #000; /* Текст чорного кольору */
+    border: none; /* Без обводки */
+    border-radius: 5px; /* Круглі краї */
+    padding: 10px 20px; /* Відступи для кнопки */
+    transition: background-color 0.3s; /* Анімація при наведенні */
+}
+
+.carousel-button:hover {
+    background-color: rgba(255, 255, 255, 1); /* Зміна фону на білий при наведенні */
+    color: #000; /* Залишаємо чорний текст */
+}
+
+.carousel-caption h3,
+.carousel-caption p {
+    color: rgba(255, 255, 255, 0.85); /* Робимо текст трохи темнішим за білий */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6); /* Додаємо тінь для покращення читабельності */
+}
+
+.carousel-button {
+    background-color: rgba(192, 192, 192, 0.6); /* Сіра кнопка з прозорістю */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition: background-color 0.3s, border 0.3s, color 0.3s; /* Плавний перехід кольору */
+}
+
+.carousel-button:hover {
+    background-color: rgba(192, 192, 192, 0.8); /* Змінюємо прозорість при наведенні */
+    color: white;
+}
+
+.carousel-button:active {
+    background-color: rgba(169, 169, 169, 0.9); /* Змінюємо колір при натисканні */
+    color: white;
+}

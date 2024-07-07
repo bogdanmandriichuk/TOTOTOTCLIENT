@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Card, Container, Row, Col, Button } from 'react-bootstrap';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import './Posts.css'; // Import your custom CSS for additional styles
+import './Posts.css'; // Імпорт вашого CSS для додаткових стилів
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
-    const [visiblePosts, setVisiblePosts] = useState(5); // State to manage the number of visible posts
+    const [visiblePosts, setVisiblePosts] = useState(5); // Стан для управління кількістю видимих постів
 
     useEffect(() => {
         fetchPosts();
@@ -23,11 +23,25 @@ const Posts = () => {
     };
 
     const showMorePosts = () => {
-        setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 5); // Increase the number of visible posts by 5
+        setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 5); // Збільшуємо кількість видимих постів на 5
     };
 
     return (
         <Container>
+            {/* Інформаційний блок зверху */}
+            <div className="info-block text-center">
+                <h2>Більше робіт можна переглянути на нашій сторінці в Instagram</h2>
+                <Button
+                    variant="primary"
+                    href="https://www.instagram.com/palaeva_tattoo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" // Замініть на ваш Instagram URL
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3"
+                >
+                    Відвідати Instagram
+                </Button>
+            </div>
+
             <h1 className="my-4 text-center">Пости</h1>
             {posts.slice(0, visiblePosts).map(post => (
                 <Row key={post.id} className="mb-4 justify-content-center">

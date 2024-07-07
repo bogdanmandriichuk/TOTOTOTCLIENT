@@ -1,15 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Carousel, Button } from 'react-bootstrap';
+import './Slider.css'; // Підключення CSS файлу
 
 const Slider = () => {
     const [index, setIndex] = useState(0);
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
+    // Функція для автоматичного перемикання слайдів
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setIndex(prevIndex => (prevIndex + 1) % 3); // Перемикання до наступного слайду кожні 3 секунди
+        }, 3000);
+
+        // Очищення інтервалу при розмонтуванні компонента
+        return () => clearInterval(intervalId);
+    }, []);
+
+    // Функція для прокручування до форми запису на сеанс
+    const scrollToAppointmentForm = () => {
+        const formElement = document.getElementById('appointment-form');
+        if (formElement) {
+            formElement.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     return (
-        <Carousel activeIndex={index} onSelect={handleSelect}>
+        <Carousel
+            activeIndex={index}
+            controls={false} // Приховання кнопок контролю слайдера
+            indicators={false} // Приховання індикаторів
+            interval={null} // Вимкнення внутрішнього автоперемикання, використовуємо `useEffect`
+        >
             <Carousel.Item>
                 <img
                     className="d-block w-100"
@@ -19,7 +39,7 @@ const Slider = () => {
                 <Carousel.Caption>
                     <h3>Ідеї, що живуть на шкірі</h3>
                     <p>Від концепції до реальності – ми разом створюємо мистецтво.</p>
-                    <Button variant="primary" onClick={() => alert('Ви натиснули кнопку другого слайда!')}>Натисніть на мене</Button>
+                    
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -31,7 +51,7 @@ const Slider = () => {
                 <Carousel.Caption>
                     <h3>Твій стиль, твоє тату</h3>
                     <p>Довірся нашому майстру, який перетворить твої ідеї на унікальні тату.</p>
-                    <Button variant="primary" onClick={() => alert('Ви натиснули кнопку першого слайда!')}>Натисніть на мене</Button>
+
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -43,7 +63,7 @@ const Slider = () => {
                 <Carousel.Caption>
                     <h3>Сміливо покажи свій характер</h3>
                     <p>Наш майстер допоможе тобі виразити себе через тату.</p>
-                    <Button variant="primary" onClick={() => alert('Ви натиснули кнопку третього слайда!')}>Натисніть на мене</Button>
+
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

@@ -14,6 +14,7 @@ const Header = ({ scrollToAppointment }) => {
                     <Nav className="ml-auto">
                         <Nav.Link as={Link} to="/">Головна</Nav.Link>
                         <Nav.Link as={Link} to="/posts">Портфоліо</Nav.Link> {/* Додаємо посилання на сторінку "Пости" */}
+                        <Nav.Link as={Link} to="/tattoo-care">Догляд за тату</Nav.Link> {/* Додаємо посилання на сторінку "TattooCare" */}
                         <Nav.Link onClick={scrollToAppointment}>Записатись на сеанс</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

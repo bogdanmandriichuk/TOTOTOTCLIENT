@@ -130,22 +130,23 @@ const FontPickerComponent = () => {
                     <p>{previewText}</p>
                 </div>
             )}
-            <div className="mt-3 mb-3">
+            <div className="mt-3 mb-3 d-flex flex-column flex-sm-row">
                 <button
                     className={`btn btn-primary me-2 ${fontStyle === 'handwriting' ? 'active' : ''}`}
                     onClick={() => handleCategoryChange('handwriting')}
-                    style={{ marginRight: '10px' }}
+                    style={{ marginBottom: '10px' }}
                 >
                     Шрифти як від руки
                 </button>
                 <button
                     className={`btn btn-primary ${fontStyle === 'display' ? 'active' : ''}`}
                     onClick={() => handleCategoryChange('display')}
-                    style={{ marginRight: '10px' , marginTop: '10px'}}
+                    style={{ marginBottom: '10px' }}
                 >
                     Друковані шрифти
                 </button>
             </div>
+
         </div>
     );
 };

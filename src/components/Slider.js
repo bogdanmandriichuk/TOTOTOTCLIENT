@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel, Button } from 'react-bootstrap';
 import './Slider.css'; // Підключення CSS файлу
+import { useTranslation } from 'react-i18next'; // Імпорт useTranslation для перекладів
 
 const Slider = () => {
+    const { t } = useTranslation(); // Використання useTranslation для перекладів
     const [index, setIndex] = useState(0);
 
     // Функція для автоматичного перемикання слайдів
@@ -37,9 +39,8 @@ const Slider = () => {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <h3>Ідеї, що живуть на шкірі</h3>
-                    <p>Від концепції до реальності – ми разом створюємо мистецтво.</p>
-                    
+                    <h3>{t('slider.firstSlideTitle')}</h3>
+                    <p>{t('slider.firstSlideDescription')}</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -49,9 +50,8 @@ const Slider = () => {
                     alt="Second slide"
                 />
                 <Carousel.Caption>
-                    <h3>Твій стиль, твоє тату</h3>
-                    <p>Довірся нашому майстру, який перетворить твої ідеї на унікальні тату.</p>
-
+                    <h3>{t('slider.secondSlideTitle')}</h3>
+                    <p>{t('slider.secondSlideDescription')}</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -61,9 +61,8 @@ const Slider = () => {
                     alt="Third slide"
                 />
                 <Carousel.Caption>
-                    <h3>Сміливо покажи свій характер</h3>
-                    <p>Наш майстер допоможе тобі виразити себе через тату.</p>
-
+                    <h3>{t('slider.thirdSlideTitle')}</h3>
+                    <p>{t('slider.thirdSlideDescription')}</p>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>

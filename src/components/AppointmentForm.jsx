@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
 import { FaTelegramPlane, FaInstagram } from 'react-icons/fa'; // Import Telegram and Instagram icons
+import { useTranslation } from 'react-i18next'; // Підключаємо i18next
 import './AnimatedButton.css';
 import './AppointmentForm.css';
 
 const AppointmentForm = ({ appointmentRef }) => {
+    const { t } = useTranslation(); // Використовуємо i18next для перекладів
     const [show, setShow] = useState(false);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
@@ -17,7 +19,7 @@ const AppointmentForm = ({ appointmentRef }) => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:3001/appointment', {
+            const response = await fetch('http://46.219.5.135:3001/appointment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -26,42 +28,42 @@ const AppointmentForm = ({ appointmentRef }) => {
             });
 
             if (response.ok) {
-                setMessage('Ви успішно записалися на сеанс. Ми скоро зв\'яжемось з вами.');
+                setMessage(t('appointmentSuccessMessage')); // Переклад повідомлення успіху
                 setName('');
                 setPhone('');
             } else {
-                setMessage('Сталася помилка. Будь ласка, спробуйте ще раз.');
+                setMessage(t('appointmentErrorMessage')); // Переклад повідомлення про помилку
             }
         } catch (error) {
-            setMessage('Сталася помилка. Будь ласка, спробуйте ще раз.');
+            setMessage(t('appointmentErrorMessage')); // Переклад повідомлення про помилку
         }
     };
 
     return (
         <div className="appointment-container" ref={appointmentRef}>
             <div className="header-text">
-                <h1>Записатися на наші послуги легко!</h1>
-                <p>Залиште свої дані, і ми зв'яжемось з вами для підтвердження запису.</p>
+                <h1>{t('appointmentHeader')}</h1>
+                <p>{t('appointmentDescription')}</p>
             </div>
             <Button variant="primary" onClick={handleShow} className="animated-button1">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
-                Записатись на сеанс
+                {t('appointmentButtonText')}
             </Button>
 
             <Modal show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Запис на сеанс</Modal.Title>
+                    <Modal.Title>{t('appointmentModalTitle')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formName">
-                            <Form.Label>Ім'я</Form.Label>
+                            <Form.Label>{t('appointmentNameLabel')}</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Введіть ваше ім'я"
+                                placeholder={t('appointmentNameLabel')}
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
@@ -69,10 +71,10 @@ const AppointmentForm = ({ appointmentRef }) => {
                         </Form.Group>
 
                         <Form.Group controlId="formPhone">
-                            <Form.Label>Номер телефону</Form.Label>
+                            <Form.Label>{t('appointmentPhoneLabel')}</Form.Label>
                             <Form.Control
                                 type="tel"
-                                placeholder="Введіть ваш номер телефону"
+                                placeholder={t('appointmentPhoneLabel')}
                                 value={phone}
                                 onChange={(e) => setPhone(e.target.value)}
                                 required
@@ -80,20 +82,20 @@ const AppointmentForm = ({ appointmentRef }) => {
                         </Form.Group>
 
                         <Button variant="primary" type="submit" className="mt-3">
-                            Відправити
+                            {t('appointmentSubmitButton')}
                         </Button>
                     </Form>
                     {message && <div className="mt-3 text-center">{message}</div>}
                     <hr />
                     <div className="contact-buttons text-center mt-4">
-                        <p>Або напишіть нам в Telegram чи Instagram</p>
+                        <p>{t('appointmentContactMessage')}</p>
                         <Button variant="info" href="https://t.me/MariTattoo17" target="_blank" className="contact-button">
                             <FaTelegramPlane style={{ marginRight: '8px' }} />
-                            Написати в Telegram
+                            {t('appointmentTelegramButton')}
                         </Button>
                         <Button variant="danger" href="https://www.instagram.com/palaeva_tattoo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" className="contact-button">
                             <FaInstagram style={{ marginRight: '8px' }} />
-                            Написати в Instagram
+                            {t('appointmentInstagramButton')}
                         </Button>
                     </div>
                 </Modal.Body>

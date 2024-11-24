@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Select from 'react-select';
+import { useTranslation } from 'react-i18next';
 
-// Масиви шрифтів для категорій Display та Handwriting
 const displayFonts = [
     'Roboto', 'Open Sans', 'Montserrat', 'Lato', 'Oswald', 'Roboto Condensed',
     'PT Sans', 'Source Sans Pro', 'Nunito', 'Playfair Display', 'Merriweather',
@@ -23,18 +23,17 @@ const handwritingFonts = [
 ];
 
 const FontPickerComponent = () => {
+    const { t } = useTranslation();
     const [fonts, setFonts] = useState([]);
     const [selectedFont, setSelectedFont] = useState('');
     const [previewText, setPreviewText] = useState('Sample Text');
     const [fontLoaded, setFontLoaded] = useState(false);
     const [fontStyle, setFontStyle] = useState('handwriting'); // Стиль шрифту: handwriting або display
 
-    // Завантаження шрифтів при зміні категорії
     useEffect(() => {
         const allFonts = fontStyle === 'handwriting' ? handwritingFonts : displayFonts;
         setFonts(allFonts.map(font => ({ label: font, value: font })));
 
-        // Завантаження шрифтів з Google Fonts для попереднього перегляду
         allFonts.forEach(font => {
             const link = document.createElement('link');
             link.href = `https://fonts.googleapis.com/css2?family=${font.replace(/ /g, '+')}:wght@400;700&display=swap`;
@@ -43,7 +42,6 @@ const FontPickerComponent = () => {
         });
     }, [fontStyle]);
 
-    // Завантаження вибраного шрифту для попереднього перегляду
     useEffect(() => {
         if (selectedFont) {
             const link = document.createElement('link');
@@ -68,49 +66,48 @@ const FontPickerComponent = () => {
         setSelectedFont('');
     };
 
-    // Кастомні стилі для компоненту Select, включаючи застосування відповідного шрифту до кожної опції
     const customStyles = {
         option: (provided, state) => ({
             ...provided,
-            fontFamily: state.data.value, // Застосування відповідного шрифту
-            fontSize: '18px', // Збільшено розмір тексту для кращої видимості
-            color: '#000', // Чорний колір для тексту
-            backgroundColor: '#fff', // Білий фон для опцій
+            fontFamily: state.data.value,
+            fontSize: '18px',
+            color: '#000',
+            backgroundColor: '#fff',
         }),
         control: (provided) => ({
             ...provided,
-            width: 300, // Збільшено ширину для кращого вигляду
+            width: 300,
             fontSize: '18px',
-            backgroundColor: '#fff', // Білий фон для елементу select
+            backgroundColor: '#fff',
         }),
         singleValue: (provided, state) => ({
             ...provided,
-            fontFamily: state.data.value, // Застосування відповідного шрифту до вибраного значення
-            fontSize: '18px', // Збільшено розмір тексту
-            color: '#000', // Чорний колір для тексту
-            backgroundColor: '#fff', // Білий фон для відображення вибраного шрифту
+            fontFamily: state.data.value,
+            fontSize: '18px',
+            color: '#000',
+            backgroundColor: '#fff',
         }),
         menu: (provided) => ({
             ...provided,
-            backgroundColor: '#fff', // Білий фон для списку опцій
+            backgroundColor: '#fff',
         }),
     };
 
     return (
         <div className="container mt-5">
-            <h2>Оберіть шрифт майбутнього тату</h2>
+            <h2>{t('fontPickerHeader')}</h2>
             <div className="mb-3">
                 <Select
                     options={fonts}
                     onChange={(selectedOption) => setSelectedFont(selectedOption.value)}
                     styles={customStyles}
-                    placeholder="Оберіть шрифт"
+                    placeholder={t('fontPickerPlaceholder')}
                     theme={(theme) => ({
                         ...theme,
                         colors: {
                             ...theme.colors,
-                            primary: '#007bff', // Синій колір для обраної опції
-                            primary25: '#d3e2ff', // Світло-синій колір для фону при наведенні
+                            primary: '#007bff',
+                            primary25: '#d3e2ff',
                         },
                     })}
                 />
@@ -121,12 +118,12 @@ const FontPickerComponent = () => {
                     className="form-control"
                     value={previewText}
                     onChange={(e) => setPreviewText(e.target.value)}
-                    placeholder="Введіть текст"
+                    placeholder={t('fontPickerPreviewText')}
                 />
             </div>
             {fontLoaded && (
                 <div style={{ fontFamily: selectedFont, fontSize: '40px', color: '#000', backgroundColor: '#fff', padding: '10px', borderRadius: '5px' }}>
-                    <h3>Попередній перегляд:</h3>
+                    <h3>{t('fontPickerPreviewTitle')}</h3>
                     <p>{previewText}</p>
                 </div>
             )}
@@ -136,17 +133,16 @@ const FontPickerComponent = () => {
                     onClick={() => handleCategoryChange('handwriting')}
                     style={{ marginBottom: '10px' }}
                 >
-                    Шрифти як від руки
+                    {t('handwritingFontsButton')}
                 </button>
                 <button
                     className={`btn btn-primary ${fontStyle === 'display' ? 'active' : ''}`}
                     onClick={() => handleCategoryChange('display')}
                     style={{ marginBottom: '10px' }}
                 >
-                    Друковані шрифти
+                    {t('displayFontsButton')}
                 </button>
             </div>
-
         </div>
     );
 };

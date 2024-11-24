@@ -1,52 +1,84 @@
-// src/components/TattooCare.jsx
-import React from 'react';
+import React, { useRef } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import ContactButton from './ContactButton';
+import ContactButton from './ContactButton'; // Імпортуємо компонент кнопки зв'язку
+import AppointmentForm from './AppointmentForm'; // Імпортуємо компонент форми запису
+import Header from './Header';  // Імпортуємо Header
+import { useTranslation } from 'react-i18next'; // Імпортуємо useTranslation для перекладів
 
 const TattooCare = () => {
+    const { t } = useTranslation(); // Використовуємо useTranslation для перекладів
+    const appointmentRef = useRef(null); // Створюємо реф для форми запису
+
+    // Функція для прокрутки до форми запису
+    const scrollToAppointment = () => {
+        if (appointmentRef.current) {
+            appointmentRef.current.scrollIntoView({ behavior: 'smooth' }); // Прокрутка до форми
+        }
+    };
+
     return (
-        <Container className="mt-5">
-            <h1 className="text-center mb-4">Догляд за тату</h1>
-            <Row className="justify-content-center">
-                <Col xs={12} sm={10} md={8} lg={6}>
-                    <Card>
-                        <Card.Body>
-                            <Card.Title className="text-center">Вітаю з новим татуюванням</Card.Title>
-                            <Card.Text>
-                                <p>Сподіваюся, мені вдалося зробити все так, як ти мріяв/мріяла! Дякую, що обрала мене.</p>
-                                <p>Правильний догляд під час загоєння не менш важливий, ніж і сам процес нанесення тату.</p>
-                                <h5>Плівка для загоєння</h5>
-                                <ul>
-                                    <li>Швидше за все я наклеїла тобі плівку, основне твоє завдання берегти її 3-4 дні. Плівка захищає тату і водночас імітує верхній шар шкіри. Весь основний процес загоєння проходить під нею, і нічого додатково робити не потрібно.</li>
-                                    <li>З плівкою можна спокійно приймати душ, але варто утриматися від гарячої ванни, спорту та всього, що змушує тебе потіти.</li>
-                                    <li>Поки плівка на шкірі під нею може накопичуватися невелика кількість лімфи та пігменту - це нормально. Коли ти знімеш її, все зайве змиється.</li>
-                                    <li>Іноді плівка може задиратися, погано триматися, особливо у спеку. Якщо плівка задерлася, але тату все ще під плівкою, все ок можна навіть зрізати цей куточок; але якщо тату видно - знімай плівку незалежно від дня і не клей її назад, далі дій як описано нижче та напиши мені.</li>
-                                    <li>На період з плівкою утримайся від алкоголю.</li>
-                                </ul>
-                                <h5>Зняття плівки</h5>
-                                <ul>
-                                    <li>На 3-4 день або коли плівка знялася сама акуратно зніми плівку.</li>
-                                    <li>Промийте тату водою з милом, можна протерти хлоргексидином. Витирай тату сухими серветками, щоб вона залишалася чистою. Далі використовуй крем Бепантен, він чудово підходить для загоєння.</li>
-                                    <li>Перший час використовуй крем кілька разів на день, від двох. Щодня промивай тату, особливо після вулиці. Важливо, щоб вона залишалася в чистоті, не піддавалася тертю, а шкіра не була сухою.</li>
-                                    <li>Не три, не чеши тату) Знаю, іноді дуже хочеться, але не треба)) Краще помаж ще кремом.</li>
-                                    <li>Після зняття плівки також утримайся на два тижні від зали, басейну, сауни, відкритої води та засмаги.</li>
-                                </ul>
-                                <h5>Пам'ятай:</h5>
-                                <ul>
-                                    <li>На місці тату не можна робити лазерну епіляцію, навіть маленький дотик може призвести до опіку.</li>
-                                    <li>Обов'язково захищай тату від сонячних променів SPF.</li>
-                                    <li>І не забудь надіслати мені фото після загоєння.</li>
-                                    <li>Якщо у тебе є якісь питання, сумніви, напиши мені і я з радістю відповім тобі.</li>
-                                </ul>
-                            </Card.Text>
-                            <div className="text-center mt-4">
-                                <ContactButton />
+        <>
+            {/* Передаємо функцію скролінгу в Header */}
+            <Header scrollToAppointment={scrollToAppointment} />
+
+            {/* Стилі для чорного фону */}
+            <div style={{ backgroundColor: 'black', minHeight: '100vh', paddingTop: '80px' }}>
+                <Container>
+                    <h1 className="text-center mb-4 mt-5" style={{ color: 'white' }}>{t('tattooCare.title')}</h1>
+                    <Row className="justify-content-center">
+                        <Col xs={12} sm={10} md={8} lg={6}>
+                            <Card style={{ backgroundColor: '#333', color: 'white' }}>
+                                <Card.Body>
+                                    <Card.Title className="text-center">{t('tattooCare.cardTitle')}</Card.Title>
+                                    <Card.Text>
+                                        <p>{t('tattooCare.intro')}</p>
+                                        <p>{t('tattooCare.careImportance')}</p>
+
+                                        <h5>{t('tattooCare.healingFilmTitle')}</h5>
+                                        <ul>
+                                            <li>{t('tattooCare.healingFilm1')}</li>
+                                            <li>{t('tattooCare.healingFilm2')}</li>
+                                            <li>{t('tattooCare.healingFilm3')}</li>
+                                            <li>{t('tattooCare.healingFilm4')}</li>
+                                            <li>{t('tattooCare.healingFilm5')}</li>
+                                        </ul>
+
+                                        <h5>{t('tattooCare.removingFilmTitle')}</h5>
+                                        <ul>
+                                            <li>{t('tattooCare.removingFilm1')}</li>
+                                            <li>{t('tattooCare.removingFilm2')}</li>
+                                            <li>{t('tattooCare.removingFilm3')}</li>
+                                            <li>{t('tattooCare.removingFilm4')}</li>
+                                            <li>{t('tattooCare.removingFilm5')}</li>
+                                        </ul>
+
+                                        <h5>{t('tattooCare.rememberTitle')}</h5>
+                                        <ul>
+                                            <li>{t('tattooCare.remember1')}</li>
+                                            <li>{t('tattooCare.remember2')}</li>
+                                            <li>{t('tattooCare.remember3')}</li>
+                                            <li>{t('tattooCare.remember4')}</li>
+                                        </ul>
+                                    </Card.Text>
+                                    <div className="text-center mt-4">
+                                        <ContactButton />
+                                    </div>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+
+                    {/* Форма для запису на сеанс */}
+                    <Row className="justify-content-center mt-5">
+                        <Col xs={12} sm={10} md={8} lg={6}>
+                            <div ref={appointmentRef} id="appointment-form">
+                                <AppointmentForm />
                             </div>
-                        </Card.Body>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        </>
     );
 };
 
